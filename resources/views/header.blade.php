@@ -28,10 +28,15 @@
         <a data-aos="zoom-in-left" data-aos-delay="600" href='category'>category</a>
         <a data-aos="zoom-in-left" data-aos-delay="750" href='faq'>FAQ</a>
         <a data-aos="zoom-in-left" data-aos-delay="850" href='about'>about</a>
-        <a data-aos="zoom-in-left" data-aos-delay="1300" href='cart'> <i class="fas fa-shopping-cart"></i></a>
-        <a data-aos="zoom-in-left" data-aos-delay="1300" href='login'> <i class="fas fa-user-circle"></i></a>
     </nav>
-    <a data-aos="zoom-in-left" data-aos-delay="1300" href='login' class="btn">Login <i class="fas fa-sign-in-alt"></i></a>
+
+    <nav class="cart-acc">
+        <a data-aos="zoom-in-left" data-aos-delay="300" href='cart' class="cart-head"><i class="fas fa-shopping-cart"></i></a>
+        <a data-aos="zoom-in-left" data-aos-delay="450" href='login' class="acc-head"><i class="fas fa-user-circle"></i></a>
+
+        {{-- @include('partial.header-right') --}}
+    </nav>
+
 
 
 </header>

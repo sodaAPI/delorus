@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\homeController;
 use App\Http\Controllers\recommendController;
 
 /*
@@ -75,10 +76,19 @@ Route::get('/wallet', function () {
 Route::post('login',[userController::class,'login']);
 Route::post('/register',[userController::class,'register']);
 Route::post('productlist',[productController::class,'index']);
-Route::post('/',[recommendController::class,'index']);
+Route::post('hat',[productController::class,'categoriesHat']);
+Route::post('mask',[productController::class,'categoriesMask']);
+Route::post('totebag',[productController::class,'categoriesTotebag']);
+Route::post('wallet',[productController::class,'categoriesWallet']);
+// Route::post('/',[recommendController::class,'index']);
 
 // Get //
 
 Route::get('productlist','App\Http\Controllers\productController@index');
-Route::get('/','App\Http\Controllers\recommendController@index');
+Route::get('hat','App\Http\Controllers\productController@categoriesHat');
+Route::get('mask','App\Http\Controllers\productController@categoriesMask');
+Route::get('totebag','App\Http\Controllers\productController@categoriesTotebag');
+Route::get('wallet','App\Http\Controllers\productController@categoriesWallet');
+// Route::get('/','App\Http\Controllers\recommendController@index');
+Route::get('/', 'App\Http\Controllers\homeController@index')->name('home');
 

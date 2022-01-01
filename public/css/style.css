@@ -93,7 +93,7 @@ section {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 1.5rem 9%;
+  padding: 0.5rem 9%;
 }
 
 .header .navbar a {
@@ -1250,4 +1250,29 @@ details summary{
     line-height: 2;
   }
 
-  
+  /* Header */
+
+  .header .cart-acc a {
+    font-size: 1.7rem;
+    color: #aaa;
+    display: inline-block;
+    margin: 0 15px;
+  }
+
+  .header .cart-acc a:hover {
+    color: #29d9d5;
+  }
+
+ .cart-head{
+
+        display: inline-block;
+        font-size: 20px;
+        color: #29d9d5;
+  }
+ .acc-head{
+
+        display: inline-block;
+        font-size: 1.7rem;
+        color: #29d9d5;
+
+  }

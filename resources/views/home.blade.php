@@ -51,7 +51,7 @@
     </div>
 
     <div class="box-container">
-        @foreach($recommends as $item)
+        @foreach($products as $item)
         <div class="box" data-aos="fade-up" data-aos-delay="150">
             <div class="image">
                 <img src="{{$item['gallery']}}" alt="">
@@ -60,7 +60,7 @@
                 <h3>{{$item['name']}}</h3>
                 <p>{{$item['description']}}</p>
                 <p>Rp.{{$item['price']}}</p>
-                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+                <a href="#" class="btn btn-outline-light">Buy Now</a>
             </div>
         </div>
         @endforeach
