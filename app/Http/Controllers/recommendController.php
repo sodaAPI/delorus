@@ -12,6 +12,9 @@ class recommendController extends Controller
     function index(){
         $recommends= Recommends::all();
         return view('home',["recommends"=>$recommends]);
+
+        // $recommends = Recommends::inRandomOrder()->take(8)->get();
+        // return view('home')->with('recommends',$recommends);
     }
 
 }

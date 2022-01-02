@@ -16,107 +16,177 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
     <!-- custom js file link  -->
 
 </head>
+
 <body>
-    
-<!-- header section starts  -->
-{{View::make('header')}}
-<!-- header section ends -->
 
-<!-- destination section starts  -->
+    <!-- header section starts  -->
+    {{View::make('header')}}
+    <!-- header section ends -->
 
-<section class="destination" id="destination">
+    <!-- destination section starts  -->
 
-    <div class="banner-cart">
+    <section class="destination" id="destination">
 
-        <div class="content" data-aos="zoom-in-up" data-aos-delay="300">
-            <span></span>
-            <h3> </h3>
-            <h3>Shopping Cart</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptatum praesentium amet quibusdam quam officia suscipit odio.</p>
+        <div class="banner-cart">
+
+            <div class="content" data-aos="zoom-in-up" data-aos-delay="300">
+                <span></span>
+                <h3> </h3>
+                <h3>Shopping Cart</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptatum praesentium amet quibusdam
+                    quam officia suscipit odio.</p>
+            </div>
+
         </div>
-    
-    </div>
 
-<div class="container">
-<div class="box" data-aos="fade-up" data-aos-delay="550">
-	<div class="cart">
+        <div class="container">
+            <div class="box" data-aos="fade-up" data-aos-delay="550">
+                @if (session()->has('success_message'))
+                <div class="alert alert-success">
+                    {{ session()->get('success_message') }}
+                </div>
+                @endif
 
-		<div class="products">
-			<div class="product">
-				<img src="images/product-3.jpg">
-				<div class="product-info">
-					<h3 class="product-name">Red Bucket Hat</h3>
-					<h4 class="product-price">Rp 35.000</h4>
-					<h4 class="product-offer">50%</h4>
-					<p class="product-quantity">quantity: <input value="1" name="">
-					<p class="product-remove">
-						<i class="fa fa-trash" aria-hidden="true"></i>
-						<span class="remove">Remove</span>
-					</p>
-				</div>
-			</div>
+                @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 
-			<div class="product">
-				<img src="images/product-4.jpg">
-				<div class="product-info">
-					<h3 class="product-name">Cow Mask</h3>
-					<h4 class="product-price">Rp 20.000</h4>
-					<h4 class="product-offer">40%</h4>
-					<p class="product-quantity">quantity: <input value="1" name="">
-					<p class="product-remove">
-						<i class="fa fa-trash" aria-hidden="true"></i>
-						<span class="remove">Remove</span>
-					</p>
-				</div>
-			</div>
-		</div>
+                @if (Cart::count()>0)
+                <h2>{{Cart::count()}} Item(s) in Shopping Cart</h2>
+                <div class="cart">
 
-		<div class="cart-total">
-			<p>
-				<span>Total Price</span>
-				<span>Rp 55.000</span>
-			</p>
+                    <div class="products">
+                        @foreach (Cart::content() as $item)
 
-			<p>
-				<span>Number of Items</span>
-				<span>2</span>
-			</p>
 
-			<p>
-				<span>You Save</span>
-				<span>Rp 25.500</span>
-			</p>
+                        <div class="product">
+                            <img src="{{$item->model->gallery}}">
+                            <div class="product-info">
+                                <a href="#" class="product-name">{{$item->model->name}}</a>
+                                <h4 class="product-price">Rp.{{$item->model->price}}</h4>
+                                <h4 class="product-offer">{{$item->model->description}}</h4>
+                                Quantity <select class="quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->qty }}">
+                                    @for ($i = 1; $i < 5 + 1 ; $i++)
+                                        <option {{ $item->qty == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                    @endfor
+                                </select>
+                                {{-- <p class="product-quantity"> Quantity: <input type="number" value="{{$item->qty}}" name="quantity" size="2" maxlength="2"></p> --}}
+                                    {{-- <p class="product-remove"> --}}
+                                         <form action="{{route('cart.destroy',$item->rowId)}}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{method_field('DELETE')}}
 
-			<a href="#">Proceed to Checkout</a>
-		</div>
-	</div>
-</div>
-</div>
-</section>
+                                            <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off"">Remove</button>
+                                        {{-- <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <span class="remove">Remove</span> --}}
 
-<!-- banner section ends -->
+                                        </form>
+                                    {{-- </p> --}}
+                            </div>
+                        </div>
 
-<!-- footer section starts  -->
+                        @endforeach
 
-{{view::make('footer')}}
+                    </div>
 
-<!-- footer section ends -->
+                    <div class="cart-total">
+                        <p>
+                            <span>Sub Total</span>
+                            <span>Rp.{{Cart::subtotal()}}</span>
+                        </p>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+                        <p>
+                            <span>Tax (10%)</span>
+                            <span>Rp.{{Cart::tax()}}</span>
+                        </p>
 
-<script>
+                        <p>
+                            <span>Total</span>
+                            <span>Rp.{{Cart::total()}}</span>
+                            <span>Rp.{{Cart::total()}}</span>
+                        </p>
 
-    AOS.init({
-        duration: 800,
-        offset:150,
-    });
+                        <a href="checkout">Proceed to Checkout</a>
 
-</script>
+                        @else
+                        <div class="spacer"></div>
+                        <h2>No Items in Cart</h2>
+                        <div class="spacer"></div>
+                        <a href="productlist" class="btn btn-primary">Continue Shopping</a>
+                        <div class="spacer"></div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @section('extra-js')
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        (function(){
+            const classname = document.querySelectorAll('.quantity')
+
+            Array.from(classname).forEach(function(element) {
+                element.addEventListener('change', function() {
+                    const id = element.getAttribute('data-id')
+                    const productQuantity = element.getAttribute('data-productQuantity')
+
+                    axios.patch(`/cart/${id}`, {
+                        quantity: this.value,
+                        productQuantity: productQuantity
+                    })
+                    .then(function (response) {
+                        // console.log(response);
+                        window.location.href = '{{ route('cart.index') }}'
+                    })
+                    .catch(function (error) {
+                        // console.log(error);
+                        window.location.href = '{{ route('cart.index') }}'
+                    });
+                })
+            })
+        })();
+    </script>
+
+    <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+    <script src="{{ asset('js/algolia.js') }}"></script>
+@endsection
+
+    <!-- banner section ends -->
+
+    <!-- footer section starts  -->
+
+    {{view::make('footer')}}
+
+    <!-- footer section ends -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 150,
+        });
+
+    </script>
 
 </body>
+
 </html>

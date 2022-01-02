@@ -17,12 +17,14 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
+    
+
     <!-- custom js file link  -->
     <script src="js/script.js" defer></script>
 
 </head>
 <body>
-    
+
 <!-- header section starts  -->
 {{View::make('header')}}
 <!-- header section ends -->

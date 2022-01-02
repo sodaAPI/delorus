@@ -5,6 +5,8 @@ use App\Http\Controllers\userController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\recommendController;
+use App\Http\Controllers\checkoutController;
+use TCG\Voyager\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +72,10 @@ Route::get('/wallet', function () {
     return view('wallet');
 });
 
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+
 
 // Post //
 
@@ -80,7 +86,9 @@ Route::post('hat',[productController::class,'categoriesHat']);
 Route::post('mask',[productController::class,'categoriesMask']);
 Route::post('totebag',[productController::class,'categoriesTotebag']);
 Route::post('wallet',[productController::class,'categoriesWallet']);
-// Route::post('/',[recommendController::class,'index']);
+Route::post('/','App\Http\Controllers\recommendController@index');
+Route::post('home','App\Http\Controllers\recommendController@index');
+Route::post('cart', 'App\Http\Controllers\cartController@store')->name('cart.store');
 
 // Get //
 
@@ -89,6 +97,26 @@ Route::get('hat','App\Http\Controllers\productController@categoriesHat');
 Route::get('mask','App\Http\Controllers\productController@categoriesMask');
 Route::get('totebag','App\Http\Controllers\productController@categoriesTotebag');
 Route::get('wallet','App\Http\Controllers\productController@categoriesWallet');
-// Route::get('/','App\Http\Controllers\recommendController@index');
-Route::get('/', 'App\Http\Controllers\homeController@index')->name('home');
+Route::get('/','App\Http\Controllers\recommendController@index');
+Route::get('home','App\Http\Controllers\recommendController@index');
+// Route::get('/', 'App\Http\Controllers\homeController@index')->name('home');
+Route::get('cart', 'App\Http\Controllers\cartController@index')->name('cart.index');
+// Route::get('checkout', 'App\Http\Controllers\checkoutController@index')->name('checkout.index');
+
+Route::get('empty', function(){
+    Cart::destroy();
+});
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Delete //
+
+Route::delete('/cart/{product}', 'App\Http\Controllers\cartController@destroy')->name('cart.destroy');
+
+
+
+
+
+
 

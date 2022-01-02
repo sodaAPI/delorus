@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +21,7 @@
 
 </head>
 <body>
-    
+
 <!-- header section starts  -->
 {{View::make('header')}}
 <!-- header section ends -->
@@ -42,25 +42,24 @@
 <div class="box">
    <div class="faqs">
       <details>
-         <summary>Can I exchange for another size? </summary>
-         <p class="text">No. We are not able to do exchanges at this time. Our pieces are 
-         limited and sell out quick. If you need a different size I recommend returning the 
-         garment for a refund and re-purchasing the size you need asap. </p>
+         <summary>Bisakah Saya Tukar Dengan Ukuran Lain? </summary>
+         <p class="text">Tidak. Kami tidak dapat melakukan pertukaran saat ini. Potongan kami adalah
+            terbatas dan cepat habis. Jika Anda membutuhkan ukuran yang berbeda, saya sarankan untuk mengembalikannya</p>
       </details>
       <details>
-         <summary>Are you going to be re-stocking a particular item or size?</summary>
-         <p class="text">Maybe! Maybe not! I usually make only 50 pieces of a design 
-         (and up to 9 different sizes) so quantities are always limited. Most of the time I 
-         don't do a re-stock. You are welcome to send us an email and ask but we might not respond because 
-         half the time I have no clue if I am or not. If an item is on sale than I definitely will not be doing 
-         another batch. I also have a feature in the product listing where you can sign up for email notifications 
-         if a sold out item comes back in stock.</p>
+         <summary>Apakah Anda akan menimbun ulang item atau ukuran tertentu?</summary>
+         <p class="text">Mungkin! Mungkin tidak! Saya biasanya hanya membuat 50 buah desain
+            (dan hingga 9 ukuran berbeda) sehingga jumlahnya selalu terbatas. Sebagian besar waktu saya
+            tidak melakukan re-stock. Anda dipersilakan untuk mengirim email dan bertanya kepada kami tetapi kami mungkin tidak merespons karena
+            separuh waktu saya tidak tahu apakah saya atau tidak. Jika suatu barang sedang dijual maka saya pasti tidak akan melakukannya
+            batch lain. Saya juga memiliki fitur dalam daftar produk di mana Anda dapat mendaftar untuk pemberitahuan email
+            jika barang yang habis terjual akan tersedia kembali.</p>
       </details>
       <details>
-         <summary>How do I know my size?</summary>
-         <p class="text">Exact measurements for all items are listed in the product descriptions. 
-         My sizing can be a little inconsistent from item to item (I'm sorry I am working on it!) so please refer 
-         to measurements closely for each item.</p>
+         <summary>Bagaimana saya tahu ukuran saya?</summary>
+         <p class="text">Pengukuran yang tepat untuk semua item tercantum dalam deskripsi produk.
+            Ukuran saya bisa sedikit tidak konsisten dari satu item ke item lainnya (maaf saya sedang mengerjakannya!) jadi silakan lihat
+            untuk pengukuran erat untuk setiap item.</p>
       </details>
    </div>
 </div>

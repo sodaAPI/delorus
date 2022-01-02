@@ -33,7 +33,7 @@
     <div class="content">
         <span data-aos="fade-up" data-aos-delay="150">Make Art Styles</span>
         <h3 data-aos="fade-up" data-aos-delay="300">as Live Style</h3>
-        <p data-aos="fade-up" data-aos-delay="450">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quia illum quod perspiciatis harum in possimus? Totam consequuntur officia quia?</p>
+        <p data-aos="fade-up" data-aos-delay="450">Delorus adalah sebuah e-commerce bidang accecories serta fashion yang menawarkan jasa desain.</p>
         <a data-aos="fade-up" data-aos-delay="600" href="#destination" class="btn">Shop Now</a>
     </div>
 
@@ -51,16 +51,23 @@
     </div>
 
     <div class="box-container">
-        @foreach($products as $item)
+        @foreach($recommends as $recommend)
         <div class="box" data-aos="fade-up" data-aos-delay="150">
             <div class="image">
-                <img src="{{$item['gallery']}}" alt="">
+                <img src="{{$recommend['gallery']}}" alt="">
             </div>
             <div class="content">
-                <h3>{{$item['name']}}</h3>
-                <p>{{$item['description']}}</p>
-                <p>Rp.{{$item['price']}}</p>
-                <a href="#" class="btn btn-outline-light">Buy Now</a>
+                <h3>{{$recommend['name']}}</h3>
+                <p>{{$recommend['description']}}</p>
+                <p>Rp.{{$recommend['price']}}</p>
+                {{-- <a href="#" class="btn btn-outline-light">Buy Now</a> --}}
+                <form action="{{route('cart.store')}}" method="POST">
+                    {{csrf_field()}}
+                    <input type="hidden" name="id" value="{{ $recommend->id}}">
+                    <input type="hidden" name="name" value="{{ $recommend->name}}">
+                    <input type="hidden" name="price" value="{{ $recommend->price}}">
+                    <button type="submit" class="btn btn-outline-light">Add to cart</button>
+                </form>
             </div>
         </div>
         @endforeach

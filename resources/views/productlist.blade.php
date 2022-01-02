@@ -16,6 +16,8 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
     <!-- custom js file link  -->
@@ -50,7 +52,14 @@
                 <h3>{{$item['name']}}</h3>
                 <p>{{$item['description']}}</p>
                 <p>Rp.{{$item['price']}}</p>
-                <a href="#" class="btn btn-outline-light">Buy Now</a>
+                {{-- <a href="#" class="btn btn-outline-light">Buy Now</a> --}}
+                <form action="{{route('cart.store')}}" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="id" value="{{ $item->id}}">
+                <input type="hidden" name="name" value="{{ $item->name}}">
+                <input type="hidden" name="price" value="{{ $item->price}}">
+                <button type="submit" class="btn btn-outline-light">Add to cart</button>
+            </form>
             </div>
         </div>
         @endforeach

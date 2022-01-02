@@ -910,6 +910,11 @@ product > img:hover{
 	margin-bottom: 10px;
 }
 
+.product-name{
+    color:#fff;
+    font-size: 15px;
+}
+
 .product-remove{
 	position: absolute;
 	bottom: 20px;
@@ -929,8 +934,7 @@ product-remove:hover{
 }
 
 product-quantity > input{
-	width: 20px;
-	padding: 5px;
+
 	text-align: center;
 }
 
@@ -987,9 +991,6 @@ product-quantity > input{
 		margin-bottom: 10px;
 	}
 
-  .product-name h3 {
-    color: #ffffff;
-  }
 
 }
 @media screen and (max-width: 900px){
@@ -1020,6 +1021,8 @@ product-quantity > input{
 
 .product-quantity{
   color: #ffffff;
+  font-size: 15px;
+
 }
 
 /* Tarra - FAQ */

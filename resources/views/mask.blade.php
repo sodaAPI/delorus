@@ -53,7 +53,14 @@
                 <h3>{{$category['name']}}</h3>
                 <p>{{$category['description']}}</p>
                 <p>Rp.{{$category['price']}}</p>
-                <a href="#" class="btn btn-outline-light">Buy Now</a>
+                {{-- <a href="#" class="btn btn-outline-light">Buy Now</a> --}}
+                <form action="{{route('cart.store')}}" method="POST">
+                    {{csrf_field()}}
+                    <input type="hidden" name="id" value="{{ $category->id}}">
+                    <input type="hidden" name="name" value="{{ $category->name}}">
+                    <input type="hidden" name="price" value="{{ $category->price}}">
+                    <button type="submit" class="btn btn-outline-light">Add to cart</button>
+                </form>
             </div>
         </div>
         @endif

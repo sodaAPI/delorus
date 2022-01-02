@@ -31,10 +31,14 @@
     </nav>
 
     <nav class="cart-acc">
-        <a data-aos="zoom-in-left" data-aos-delay="300" href='cart' class="cart-head"><i class="fas fa-shopping-cart"></i></a>
-        <a data-aos="zoom-in-left" data-aos-delay="450" href='login' class="acc-head"><i class="fas fa-user-circle"></i></a>
+        {{-- <a data-aos="zoom-in-left" data-aos-delay="300" href='cart' class="cart-head"><i class="fas fa-shopping-cart">
+            @if (Cart::instance('default')->count() > 0)
+                {{Cart::instance('default')->count()}}<span>
+            @endif
+        </span></i></a>
+        <a data-aos="zoom-in-left" data-aos-delay="450" href='login' class="acc-head"><i class="fas fa-user-circle"></i></a> --}}
 
-        {{-- @include('partial.header-right') --}}
+        @include('partial.header-right')
     </nav>
 
 

@@ -9,7 +9,7 @@ class homeController extends Controller
 {
     //
     public function index(){
-        $products = Products::inRandomOrder()->take(8)->get();
-        return view('home')->with('products',$products);
+        // $products = Products::inRandomOrder()->take(8)->get();
+        // return view('home')->with('products',$products);
     }
 }
