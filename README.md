@@ -11,3 +11,15 @@ Role        : Administrator
 Email       : user@user.com
 Password    : password
 Role        : User
+
+[Installation]
+
+composer install
+
+composer update
+
+php artisan migrate
+
+php artisan db:seed
+
+php artisan voyager:install
