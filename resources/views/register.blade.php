@@ -22,7 +22,7 @@
 
 </head>
 <body>
-    
+
 <!-- header section starts  -->
 {{View::make('header')}}
 <!-- header section ends -->

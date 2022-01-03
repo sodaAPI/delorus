@@ -79,14 +79,14 @@
                                 <a href="#" class="product-name">{{$item->model->name}}</a>
                                 <h4 class="product-price">Rp.{{$item->model->price}}</h4>
                                 <h4 class="product-offer">{{$item->model->description}}</h4>
-                                Quantity <select class="quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->qty }}">
+                                {{-- Quantity <select class="quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->qty }}">
                                     @for ($i = 1; $i < 5 + 1 ; $i++)
                                         <option {{ $item->qty == $i ? 'selected' : '' }}>{{ $i }}</option>
                                     @endfor
-                                </select>
-                                {{-- <p class="product-quantity"> Quantity: <input type="number" value="{{$item->qty}}" name="quantity" size="2" maxlength="2"></p> --}}
+                                </select> --}}
+                                <p class="product-quantity"> Quantity: <input type="number" value="{{$item->model->qty}}" class="prod_id" name="quantity" value="1" size="2" maxlength="2"></p>
                                     {{-- <p class="product-remove"> --}}
-                                         <form action="{{route('cart.destroy',$item->rowId)}}" method="POST">
+                                         <form action="{{route('cart.destroy',$item->rowId, $item->id)}}" method="POST">
                                             {{ csrf_field() }}
                                             {{method_field('DELETE')}}
 
@@ -116,7 +116,6 @@
 
                         <p>
                             <span>Total</span>
-                            <span>Rp.{{Cart::total()}}</span>
                             <span>Rp.{{Cart::total()}}</span>
                         </p>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
+use DB;
 
 
 class productController extends Controller
@@ -41,5 +42,19 @@ class productController extends Controller
         return view('wallet',["products"=>$products]);
 
     }
+
+    public function cari(Request $request)
+	{
+		// menangkap data pencarian
+        $search = $request->input('search');
+
+    		// mengambil data dari table pegawai sesuai pencarian data
+            $products = Products::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->get();
+    		// mengirim data pegawai ke view index
+            return view('search', compact('products'));
+
+	}
 
 }

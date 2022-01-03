@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delorus - Finest Accesories Shop</title>
+    <title>Delorus - Product List</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -12,55 +14,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
     <!-- custom js file link  -->
+
 </head>
 <body>
 
 <!-- header section starts  -->
-
 {{View::make('header')}}
-
 <!-- header section ends -->
-
-<!-- home section starts  -->
-
-<section class="home" id="home">
-
-    <div class="content">
-        <span data-aos="fade-up" data-aos-delay="150">Make Art Styles</span>
-        <h3 data-aos="fade-up" data-aos-delay="300">as Live Style</h3>
-        <p data-aos="fade-up" data-aos-delay="450">Delorus adalah sebuah e-commerce bidang accecories serta fashion yang menawarkan jasa desain.</p>
-        <a data-aos="fade-up" data-aos-delay="600" href="#destination" class="btn">Shop Now</a>
-    </div>
-
-</section> -->
-
-<!-- home section ends -->
 
 <!-- destination section starts  -->
 
 <section class="destination" id="destination">
 
-    <div class="heading">
-        <span>Product list</span>
-        <h1>Our Recomendation</h1>
+    <div class="banner">
+
+        <div class="content" data-aos="zoom-in-up" data-aos-delay="300">
+            <span></span>
+            <h3> </h3>
+            <h3>Product List</h3>
+        </div>
     </div>
 
     <div class="box-container">
-        @foreach($recommends as $item)
+
+    @foreach($products as $item)
         <div class="box" data-aos="fade-up" data-aos-delay="150">
             <div class="image">
-                <img src="{{$item['gallery']}}" alt="">
+            <img src="{{$item['gallery']}}" alt="" href="#" >
             </div>
             <div class="content">
                 <h3>{{$item['name']}}</h3>
                 <p>{{$item['description']}}</p>
                 <p>Rp.{{$item['price']}}</p>
-                {{-- <a href="#" class="btn btn-outline-light">Buy Now</a> --}}
+                {{-- <a href="addtochart" class="btn btn-outline-light">Add to Chart</a> --}}
                 <form action="{{route('cart.store')}}" method="POST">
                     {{csrf_field()}}
                     <input type="hidden" name="id" value="{{ $item->id}}">
@@ -70,8 +61,7 @@
                 </form>
             </div>
         </div>
-        @endforeach
-
+    @endforeach
     </div>
 
 </section>
@@ -80,11 +70,9 @@
 
 <!-- footer section starts  -->
 
-{{View::make('footer')}}
+{{view::make('footer')}}
 
 <!-- footer section ends -->
-
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
@@ -98,5 +86,4 @@
 </script>
 
 </body>
-
 </html>

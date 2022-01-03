@@ -35,6 +35,7 @@ class userController extends Controller
         $user->save();
         return redirect('/login');
     }
+    
     function admin(Request $req){
         $admin= User::where(['email'=>$req->email])->first();
         if(!$admin || !Hash::check($req->password,$admin->password))
@@ -47,5 +48,5 @@ class userController extends Controller
         }
     }
 
-    
+
 }

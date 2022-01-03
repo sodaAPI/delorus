@@ -75,7 +75,11 @@ Route::get('/wallet', function () {
 Route::get('/checkout', function () {
     return view('checkout');
 });
+Route::get('/productdetail', function () {
+    return view('productdetail');
+});
 
+Route::get('search', 'App\Http\Controllers\productController@cari')->name('search');
 
 // Post //
 

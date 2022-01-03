@@ -28,6 +28,12 @@
         <a data-aos="zoom-in-left" data-aos-delay="600" href='category'>category</a>
         <a data-aos="zoom-in-left" data-aos-delay="750" href='faq'>FAQ</a>
         <a data-aos="zoom-in-left" data-aos-delay="850" href='about'>about</a>
+        <a data-aos="zoom-in-left" data-aos-delay="950">
+        <form action="{{ route('search') }}" method="GET" class="search-header">
+            <input type="text" class="form-control" name="search" value="{{ old('cari') }}" placeholder="    Search..."/>
+            <button  type="submit" class="btn-xs"></button>
+        </form>
+    </a>
     </nav>
 
     <nav class="cart-acc">
@@ -45,3 +51,11 @@
 
 </header>
 <!-- header section ends -->
+
+<style>
+    .search-header{
+        display: inline;
+    }
+
+
+</style>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Recommendst;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class cartController extends Controller
@@ -62,5 +64,30 @@ class cartController extends Controller
         Cart::update($id, $request->quantity);
         session()->flash('success_message', 'Quantity was updated successfully!');
         return response()->json(['success' => true]);
+    }
+
+    public function updateCart(Request $request){
+        $prod_id = $request->input('prod_id');
+        $product_qty = $request->input('prod_qty');
+
+        if(Auth::check()){
+            if (Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()){
+                $cart = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id());
+                $cart->prod_qty = $product_qty;
+                $cart->update();
+                return response()->json(['status'=>"Quantity Updated"]);
+            }
+        }
+    }
+
+    public function deleteProduct(Request $request){
+        if (Auth::check()){
+            $prod_id = $request->input('prod_id');
+            if (Cart::where ('prod_id', $prod_id)->where('user_id', Auth::id()->exists())){
+                $cartItem = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
+                $cartItem->delete();
+                return response()->json(['status'=>"Product Deleted Successfully"]);
+            }
+        }
     }
 }

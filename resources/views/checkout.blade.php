@@ -34,43 +34,43 @@
                     <div class="row checkout-form">
                         <div class="col-md-6">
                             <label for="">First Name</label>
-                            <input type="text" class="form-control" placeholder="Enter First Name">
+                            <input type="text" class="form-control" name="fname" placeholder="Enter First Name">
                         </div>
                         <div class="col-md-6">
                             <label for="">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Last Name">
+                            <input type="text" class="form-control" name="lname" placeholder="Enter Last Name">
                         </div>
                         <div class="col-md-6">
                             <label for="">Email</label>
-                            <input type="text" class="form-control" placeholder="Enter Email">
+                            <input type="text" class="form-control" name="email" placeholder="Enter Email">
                         </div>
                         <div class="col-md-6">
                             <label for="">Phone Number</label>
-                            <input type="text" class="form-control" placeholder="Enter Phone Number">
+                            <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number">
                         </div>
                         <div class="col-md-6">
                             <label for="">Address</label>
-                            <input type="text" class="form-control" placeholder="Enter Address">
+                            <input type="text" class="form-control" name="address" placeholder="Enter Address">
                         </div>
                         <div class="col-md-6">
                             <label for="">Address 2</label>
-                            <input type="text" class="form-control" placeholder="Enter Address 2">
+                            <input type="text" class="form-control" name="address2" placeholder="Enter Address 2">
                         </div>
                         <div class="col-md-6">
                             <label for="">City</label>
-                            <input type="text" class="form-control" placeholder="Enter City">
+                            <input type="text" class="form-control" name="city" placeholder="Enter City">
                         </div>
                         <div class="col-md-6">
                             <label for="">State</label>
-                            <input type="text" class="form-control" placeholder="Enter State">
+                            <input type="text" class="form-control" name="state" placeholder="Enter State">
                         </div>
                         <div class="col-md-6">
                             <label for="">Country</label>
-                            <input type="text" class="form-control" placeholder="Enter Country">
+                            <input type="text" class="form-control" name="country" placeholder="Enter Country">
                         </div>
                         <div class="col-md-6">
                             <label for="">Zip Code</label>
-                            <input type="text" class="form-control" placeholder="Enter Zip Code">
+                            <input type="text" class="form-control" name="zip" placeholder="Enter Zip Code">
                         </div>
                     </div>
                 </div>

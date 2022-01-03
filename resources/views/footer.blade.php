@@ -6,7 +6,7 @@
             <a href="#" class="logo"> <img src="/images/logo.png" alt=""> </a>
             <p>Delorus adalah sebuah e-commerce bidang accecories serta fashion yang menawarkan jasa desain.</p>
             <div class="share">
-                <a href="#" class="fab fa-whatsapp"></a>
+                <a href="https://wa.me/+6288210956255?text=Saya ingin membeli produk aksesoris dari delorus" class="fab fa-whatsapp"></a>
 
             </div>
         </div>
